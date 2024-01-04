@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bek6cjgeup601"]
+
+[ext_resource type="Shader" path="res://fow.gdshader" id="1_cufh1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bj33p"]
+render_priority = 1
+shader = ExtResource("1_cufh1")
+shader_parameter/texSize = null
+shader_parameter/world_offset = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_roxs2"]
+flip_faces = true
+size = Vector2(2, 20)
+
+[node name="Camera_base" type="Node3D"]
+
+[node name="Camera_rotator" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="Camera_rotator"]
+transform = Transform3D(0.999869, -0.0151144, 0.00577041, 2.89663e-08, 0.356673, 0.934229, -0.0161785, -0.934107, 0.356626, 20.947, 97.3451, -2.43947)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera_rotator/Camera"]
+transform = Transform3D(1, 4.65661e-10, 0, -9.31323e-10, -2.98023e-08, 1, 4.65661e-10, -1, -5.96046e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_bj33p")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_roxs2")

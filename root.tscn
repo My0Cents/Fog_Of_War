@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqlmebb42dgew"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4mnp"]
+albedo_color = Color(0.462745, 0.462745, 0.462745, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_seahx"]
+material = SubResource("StandardMaterial3D_w4mnp")
+size = Vector2(100, 100)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jm0a7"]
+points = PackedVector3Array(50.7837, 0.793495, 50.7837, -50.7837, -0.793495, -50.7837, -50.7837, 0.793495, -50.7837, 50.7837, -0.793495, -50.7837, -50.7837, -0.793495, 50.7837, -50.7837, 0.793495, 50.7837, 50.7837, 0.793495, -50.7837, 50.7837, -0.793495, 50.7837)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0gi6b"]
+
+[sub_resource type="Sky" id="Sky_rteny"]
+sky_material = SubResource("ProceduralSkyMaterial_0gi6b")
+
+[sub_resource type="Environment" id="Environment_nbxup"]
+background_mode = 2
+sky = SubResource("Sky_rteny")
+
+[node name="Root" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_seahx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jm0a7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nbxup")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.765517, 0.643416, 0, -0.643416, 0.765517, 0, 43.6044, 23.1542)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 812.0
+offset_bottom = 317.0
